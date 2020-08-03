@@ -30,9 +30,8 @@ backup=('etc/fwupd/daemon.conf'
         'etc/fwupd/remotes.d/vendor.conf'
         'etc/fwupd/uefi.conf'
         'etc/fwupd/upower.conf')
-source=("https://people.freedesktop.org/~hughsient/releases/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('bc1b625503d7e3ff73d7d69348b38e5337f40d60f6722d1820c4e2b530eff842'
-            'SKIP')
+source=("https://people.freedesktop.org/~hughsient/releases/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('bc1b625503d7e3ff73d7d69348b38e5337f40d60f6722d1820c4e2b530eff842')
 validpgpkeys=(163EB50119225DB3DF8F49EA17ACBA8DFA970E17) # Richard Hughes <richard@hughsie.com>
 
 build() {
