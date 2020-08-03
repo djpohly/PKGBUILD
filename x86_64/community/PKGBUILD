@@ -11,14 +11,14 @@ license=(LGPL)
 depends=(libxmlb efivar python libsmbios libgusb
          libsoup json-glib gcab libarchive gpgme
          libgudev polkit shared-mime-info tpm2-tss
-         flashrom libjcat eudev)
+         flashrom libjcat eudev elogind)
 optdepends=(
     'modemmanager: modem firmware upgrade support'
     'udisks2: UEFI firmware upgrade support'
 )
 makedepends=(meson valgrind gobject-introspection gtk-doc
              python-cairo noto-fonts noto-fonts-cjk python-gobject vala
-             bash-completion python-pillow help2man gnu-efi-libs eudev)
+             bash-completion python-pillow help2man gnu-efi-libs)
 checkdepends=(umockdev)
 backup=('etc/fwupd/daemon.conf'
         'etc/fwupd/redfish.conf'
@@ -35,7 +35,7 @@ sha256sums=('bc1b625503d7e3ff73d7d69348b38e5337f40d60f6722d1820c4e2b530eff842')
 validpgpkeys=(163EB50119225DB3DF8F49EA17ACBA8DFA970E17) # Richard Hughes <richard@hughsie.com>
 
 build() {
-    arch-meson ${pkgname}-${pkgver} build -D b_lto=false -D plugin_flashrom=true
+    arch-meson ${pkgname}-${pkgver} build -D b_lto=false -D plugin_flashrom=true -D systemd=false -D elogind=true
     meson compile -C build
 }
 
