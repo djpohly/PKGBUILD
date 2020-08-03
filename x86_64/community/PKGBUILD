@@ -11,14 +11,14 @@ license=(LGPL)
 depends=(libxmlb efivar python libsmbios libgusb
          libsoup json-glib gcab libarchive gpgme
          libgudev polkit shared-mime-info tpm2-tss
-         flashrom libjcat)
+         flashrom libjcat eudev)
 optdepends=(
     'modemmanager: modem firmware upgrade support'
     'udisks2: UEFI firmware upgrade support'
 )
 makedepends=(meson valgrind gobject-introspection gtk-doc
              python-cairo noto-fonts noto-fonts-cjk python-gobject vala
-             bash-completion python-pillow help2man gnu-efi-libs)
+             bash-completion python-pillow help2man gnu-efi-libs eudev)
 checkdepends=(umockdev)
 backup=('etc/fwupd/daemon.conf'
         'etc/fwupd/redfish.conf'
