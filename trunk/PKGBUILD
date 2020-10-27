@@ -11,7 +11,7 @@ license=(LGPL)
 depends=(libxmlb efivar python libsmbios libgusb
          libsoup json-glib gcab libarchive gpgme
          libgudev polkit shared-mime-info tpm2-tss
-         flashrom libjcat eudev elogind)
+         flashrom libjcat)
 optdepends=(
     'modemmanager: modem firmware upgrade support'
     'udisks2: UEFI firmware upgrade support'
@@ -30,12 +30,13 @@ backup=('etc/fwupd/daemon.conf'
         'etc/fwupd/remotes.d/vendor.conf'
         'etc/fwupd/uefi.conf'
         'etc/fwupd/upower.conf')
-source=("https://people.freedesktop.org/~hughsient/releases/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('712ce5ee3af87edfbaff991f352d887250293917aa3509899b3b659b0baff743')
+source=("https://people.freedesktop.org/~hughsient/releases/${pkgname}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('712ce5ee3af87edfbaff991f352d887250293917aa3509899b3b659b0baff743'
+            'SKIP')
 validpgpkeys=(163EB50119225DB3DF8F49EA17ACBA8DFA970E17) # Richard Hughes <richard@hughsie.com>
 
 build() {
-    arch-meson ${pkgname}-${pkgver} build -D b_lto=false -D plugin_flashrom=true
+    arch-meson ${pkgname}-${pkgver} build -D b_lto=false -D plugin_flashrom=true -D systemd=false -D elogind=true
     meson compile -C build
 }
 
