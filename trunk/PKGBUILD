@@ -51,6 +51,7 @@ build() {
         -D plugin_flashrom=true \
         -D supported_build=true \
         -D systemd=false \
+	-D offline=false \
         -D elogind=true \
         -D efi_binary=false
     meson compile -C build
