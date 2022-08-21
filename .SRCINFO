@@ -1,0 +1,20 @@
+pkgbase = megatools
+	pkgdesc = CLI for MEGA
+	pkgver = 1.11.0+20220519
+	pkgrel = 1
+	url = https://megatools.megous.com
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = asciidoc
+	makedepends = docbook2x
+	makedepends = meson
+	depends = curl
+	depends = glib2
+	source = https://megatools.megous.com/builds/megatools-1.11.0.20220519.tar.gz
+	sha512sums = 5c379a5a8da150d6d95a84f6bcf0c9be5b725c2c0e799e8d1e3358ac6081579eacc853f6b3d369c06006d3bdb3917dc20cf39ca5c69f153dc38de9daab74cea1
+
+pkgname = megatools
