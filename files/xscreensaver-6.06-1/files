@@ -124,6 +124,7 @@ usr/lib/xscreensaver/headroom
 usr/lib/xscreensaver/helix
 usr/lib/xscreensaver/hexadrop
 usr/lib/xscreensaver/hexstrut
+usr/lib/xscreensaver/hextrail
 usr/lib/xscreensaver/hilbert
 usr/lib/xscreensaver/hopalong
 usr/lib/xscreensaver/hydrostat
@@ -231,7 +232,6 @@ usr/lib/xscreensaver/surfaces
 usr/lib/xscreensaver/swirl
 usr/lib/xscreensaver/tangram
 usr/lib/xscreensaver/tessellimage
-usr/lib/xscreensaver/thornbird
 usr/lib/xscreensaver/timetunnel
 usr/lib/xscreensaver/topblock
 usr/lib/xscreensaver/triangle
@@ -263,6 +263,7 @@ usr/lib/xscreensaver/xscreensaver-getimage-file
 usr/lib/xscreensaver/xscreensaver-getimage-video
 usr/lib/xscreensaver/xscreensaver-gfx
 usr/lib/xscreensaver/xscreensaver-gl-visual
+usr/lib/xscreensaver/xscreensaver-systemd
 usr/lib/xscreensaver/xscreensaver-text
 usr/lib/xscreensaver/xspirograph
 usr/lib/xscreensaver/zoom
@@ -271,7 +272,6 @@ usr/share/X11/
 usr/share/X11/app-defaults/
 usr/share/X11/app-defaults/XScreenSaver
 usr/share/applications/
-usr/share/applications/xscreensaver-properties.desktop
 usr/share/applications/xscreensaver-settings.desktop
 usr/share/applications/xscreensaver.desktop
 usr/share/fonts/
@@ -405,6 +405,7 @@ usr/share/man/man6/headroom.6.gz
 usr/share/man/man6/helix.6.gz
 usr/share/man/man6/hexadrop.6.gz
 usr/share/man/man6/hexstrut.6.gz
+usr/share/man/man6/hextrail.6.gz
 usr/share/man/man6/hilbert.6.gz
 usr/share/man/man6/hopalong.6.gz
 usr/share/man/man6/hydrostat.6.gz
@@ -509,7 +510,6 @@ usr/share/man/man6/surfaces.6.gz
 usr/share/man/man6/swirl.6.gz
 usr/share/man/man6/tangram.6.gz
 usr/share/man/man6/tessellimage.6.gz
-usr/share/man/man6/thornbird.6.gz
 usr/share/man/man6/timetunnel.6.gz
 usr/share/man/man6/topblock.6.gz
 usr/share/man/man6/triangle.6.gz
@@ -663,6 +663,7 @@ usr/share/xscreensaver/config/headroom.xml
 usr/share/xscreensaver/config/helix.xml
 usr/share/xscreensaver/config/hexadrop.xml
 usr/share/xscreensaver/config/hexstrut.xml
+usr/share/xscreensaver/config/hextrail.xml
 usr/share/xscreensaver/config/hilbert.xml
 usr/share/xscreensaver/config/hopalong.xml
 usr/share/xscreensaver/config/hydrostat.xml
@@ -769,7 +770,6 @@ usr/share/xscreensaver/config/surfaces.xml
 usr/share/xscreensaver/config/swirl.xml
 usr/share/xscreensaver/config/tangram.xml
 usr/share/xscreensaver/config/tessellimage.xml
-usr/share/xscreensaver/config/thornbird.xml
 usr/share/xscreensaver/config/timetunnel.xml
 usr/share/xscreensaver/config/topblock.xml
 usr/share/xscreensaver/config/triangle.xml
@@ -796,12 +796,4 @@ usr/share/xscreensaver/config/xmatrix.xml
 usr/share/xscreensaver/config/xrayswarm.xml
 usr/share/xscreensaver/config/xspirograph.xml
 usr/share/xscreensaver/config/zoom.xml
-usr/share/xscreensaver/ui/
-usr/share/xscreensaver/ui/screensaver-cmndln.png
-usr/share/xscreensaver/ui/screensaver-colorselector.png
-usr/share/xscreensaver/ui/screensaver-diagnostic.png
-usr/share/xscreensaver/ui/screensaver-locking.png
-usr/share/xscreensaver/ui/screensaver-power.png
-usr/share/xscreensaver/ui/screensaver-snap.png
-usr/share/xscreensaver/ui/xscreensaver.ui
 usr/share/xscreensaver/xscreensaver.service
