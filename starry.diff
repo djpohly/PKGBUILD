@@ -1,18 +1,18 @@
-diff -Nru xscreensaver-6.02.orig/driver/XScreenSaver.ad.in xscreensaver-6.02/driver/XScreenSaver.ad.in
---- xscreensaver-6.02.orig/driver/XScreenSaver.ad.in	2021-10-11 13:49:37.173116852 -0500
-+++ xscreensaver-6.02/driver/XScreenSaver.ad.in	2022-02-17 08:36:58.728285873 -0600
+diff -Nru xscreensaver-6.06.orig/driver/XScreenSaver.ad.in xscreensaver-6.06/driver/XScreenSaver.ad.in
+--- xscreensaver-6.06.orig/driver/XScreenSaver.ad.in	2022-12-11 14:32:55.185339669 -0600
++++ xscreensaver-6.06/driver/XScreenSaver.ad.in	2023-01-09 15:24:07.766675195 -0600
 @@ -327,6 +327,7 @@
- 				maze -root				    \n\
- @GL_KLUDGE@ GL: 				superquadrics -root			    \n\
- 				attraction -root			    \n\
+ 				maze --root				    \n\
+ @GL_KLUDGE@ GL: 				superquadrics --root			    \n\
+ 				attraction --root			    \n\
 +				adstarry -root				    \n\
- 				blitspin -root				    \n\
- 				greynetic -root				    \n\
- 				helix -root				    \n\
-diff -Nru xscreensaver-6.02.orig/hacks/Makefile.in xscreensaver-6.02/hacks/Makefile.in
---- xscreensaver-6.02.orig/hacks/Makefile.in	2021-10-11 20:04:29.723043835 -0500
-+++ xscreensaver-6.02/hacks/Makefile.in	2022-02-17 08:38:32.397963019 -0600
-@@ -92,6 +92,7 @@
+ 				blitspin --root				    \n\
+ 				greynetic --root			    \n\
+ 				helix --root				    \n\
+diff -Nru xscreensaver-6.06.orig/hacks/Makefile.in xscreensaver-6.06/hacks/Makefile.in
+--- xscreensaver-6.06.orig/hacks/Makefile.in	2022-12-11 15:49:18.247442996 -0600
++++ xscreensaver-6.06/hacks/Makefile.in	2023-01-09 15:23:48.426652302 -0600
+@@ -95,6 +95,7 @@
  		  $(UTILS_BIN)/font-retry.o
  
  SRCS		= xscreensaver-getimage.c \
@@ -20,7 +20,7 @@ diff -Nru xscreensaver-6.02.orig/hacks/Makefile.in xscreensaver-6.02/hacks/Makef
  		  attraction.c blitspin.c bouboule.c braid.c bubbles.c \
  		  bubbles-default.c decayscreen.c deco.c drift.c flag.c \
  		  flame.c forest.c vines.c galaxy.c grav.c greynetic.c \
-@@ -132,6 +133,7 @@
+@@ -135,6 +136,7 @@
  # but that are not shipped with xscreensaver itself.
  #
  OBJS		= attraction.o blitspin.o bouboule.o braid.o bubbles.o \
@@ -28,16 +28,16 @@ diff -Nru xscreensaver-6.02.orig/hacks/Makefile.in xscreensaver-6.02/hacks/Makef
  		  bubbles-default.o decayscreen.o deco.o drift.o flag.o \
  		  flame.o forest.o vines.o galaxy.o grav.o greynetic.o \
  		  halo.o helix.o hopalong.o hypercube.o ifs.o imsmap.o \
-@@ -194,6 +196,8 @@
+@@ -197,6 +199,8 @@
  		  lightning lisa lissie lmorph rotor sphere spiral t3d vines \
- 		  whirlygig worm xsublim juggle
+ 		  whirlygig worm xsublim juggle thornbird
  
 +EXES           += adstarry
 +
  HACK_OBJS_1	= fps.o $(UTILS_BIN)/resources.o $(UTILS_BIN)/visual.o \
  		  $(UTILS_BIN)/usleep.o $(UTILS_BIN)/yarandom.o \
  		  $(UTILS_BIN)/utf8wc.o $(UTILS_BIN)/font-retry.o \
-@@ -578,6 +582,9 @@
+@@ -582,6 +586,9 @@
  deco:		deco.o		$(HACK_OBJS) $(COL)
  	$(CC_HACK) -o $@ $@.o	$(HACK_OBJS) $(COL) $(HACK_LIBS)
  
@@ -47,9 +47,9 @@ diff -Nru xscreensaver-6.02.orig/hacks/Makefile.in xscreensaver-6.02/hacks/Makef
  flame:		flame.o		$(HACK_OBJS) $(COL)
  	$(CC_HACK) -o $@ $@.o	$(HACK_OBJS) $(COL) $(HACK_LIBS)
  
-diff -Nru xscreensaver-6.02.orig/hacks/adstarry.c xscreensaver-6.02/hacks/adstarry.c
---- xscreensaver-6.02.orig/hacks/adstarry.c	1969-12-31 18:00:00.000000000 -0600
-+++ xscreensaver-6.02/hacks/adstarry.c	2022-02-17 08:36:58.731619166 -0600
+diff -Nru xscreensaver-6.06.orig/hacks/adstarry.c xscreensaver-6.06/hacks/adstarry.c
+--- xscreensaver-6.06.orig/hacks/adstarry.c	1969-12-31 18:00:00.000000000 -0600
++++ xscreensaver-6.06/hacks/adstarry.c	2023-01-09 15:23:48.429985639 -0600
 @@ -0,0 +1,331 @@
 +/* Starry Night by Craig Dickson, Copyright (c) 1990-1994 Berkeley Systems Inc.
 + *
@@ -382,9 +382,9 @@ diff -Nru xscreensaver-6.02.orig/hacks/adstarry.c xscreensaver-6.02/hacks/adstar
 +};
 +
 +XSCREENSAVER_MODULE("StarryNight", starry)
-diff -Nru xscreensaver-6.02.orig/hacks/config/adstarry.xml xscreensaver-6.02/hacks/config/adstarry.xml
---- xscreensaver-6.02.orig/hacks/config/adstarry.xml	1969-12-31 18:00:00.000000000 -0600
-+++ xscreensaver-6.02/hacks/config/adstarry.xml	2022-02-17 08:36:58.731619166 -0600
+diff -Nru xscreensaver-6.06.orig/hacks/config/adstarry.xml xscreensaver-6.06/hacks/config/adstarry.xml
+--- xscreensaver-6.06.orig/hacks/config/adstarry.xml	1969-12-31 18:00:00.000000000 -0600
++++ xscreensaver-6.06/hacks/config/adstarry.xml	2023-01-09 15:23:48.429985639 -0600
 @@ -0,0 +1,27 @@
 +<?xml version="1.0" encoding="ISO-8859-1"?>
 +
