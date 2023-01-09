@@ -1,27 +1,27 @@
-# Maintainer: Nathan Owens <ndowens@artixlinux.org>
+# Maintainer: Nathan <ndowens@artixlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xscreensaver
-pkgver=6.04
+pkgver=6.06
 pkgrel=1
 pkgdesc='Screen saver and locker for the X Window System'
 url='https://www.jwz.org/xscreensaver/'
 arch=('x86_64')
 license=('BSD')
 depends=(
-  'gtk2' 'glu' 'xorg-appres' 'libglvnd' 'libjpeg-turbo' 'libjpeg.so'
+  'gtk3' 'glu' 'xorg-appres' 'libglvnd' 'libjpeg-turbo' 'libjpeg.so'
   'libx11' 'libxcrypt' 'libcrypt.so' 'libxext' 'libxft' 'libxi'
   'libxinerama' 'libxmu' 'libxrandr' 'libxt' 'libxxf86vm' 'perl-libwww' 'pam'
-  'libpam.so' 'glibc' 'glib2' 'gdk-pixbuf2' 'gdk-pixbuf-xlib'
+  'libpam.so' 'glibc' 'glib2' 'gdk-pixbuf2'
 )
 makedepends=('bc' 'intltool' 'libxpm' 'gdm')
 optdepends=('gdm: for login manager support')
 backup=('etc/pam.d/xscreensaver')
 source=(https://www.jwz.org/xscreensaver/${pkgname}-${pkgver}.tar.gz
         LICENSE)
-sha512sums=('7e8f01853b3d9252ce0120894db7dd4fa3cd19114602a09aa770ec750e2f3742585ca4daf19b009e97386f8c0e3cc89330fe760148c6388f41de8cc1f48f8071'
+sha512sums=('988e30d422ef985ac348c275e098ddfe1ee034a2e916c91690ee2836c908801c1e017e22d828aca981b0f8bfc5491cd83ab7c45aabc155ba5013df8b149cbcb5'
             '863c699479b2ec2775a0d1cba22e615929194a14af164b3513e46a0c04229da6547255a4da8f7f1bbb40906898c124ed3c9ec2436b76b62affcb62385af9783e')
-b2sums=('42411d5f63a99d4aaccbc3bc34f8c31a1f25f1806eaf513a1ba59c2f24722e27fa2a7b1970c82a591502627224c4b4269176bda3475aba58bb945d5cd9a9464b'
+b2sums=('f15a439430bbca0852926c15716d3c4b22148d8c36d60b18ab033454d4df0d981400029b32e1f30a061592273deb648453db91813994b9bc4d6c66a61774a5d1'
         'cacb6ba39d6ecb8703ef5f5a7dc74de0ca805cce73b43a8b9b6b4c255c909aa9b5e692de76c2fbd4da26ce6efb5f2a46138c43b1b37f53cee6d20fd6ed41f4a9')
 
 prepare() {
@@ -45,7 +45,6 @@ build() {
     --with-gl \
     --without-gle \
     --with-pixbuf \
-    --without-systemd \
     --with-jpeg
   make
 }
@@ -55,7 +54,7 @@ package() {
   install -d "${pkgdir}/etc/pam.d"
   make install_prefix="${pkgdir}" install
   install -Dm 644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  echo "NotShowIn=KDE;GNOME;" >> "${pkgdir}/usr/share/applications/xscreensaver-properties.desktop"
+  echo "NotShowIn=KDE;GNOME;" >> "${pkgdir}/usr/share/applications/xscreensaver-settings.desktop"
 }
 
 source+=(no-delay.diff
