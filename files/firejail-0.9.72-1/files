@@ -106,6 +106,9 @@ etc/firejail/autokey-qt.profile
 etc/firejail/autokey-run.profile
 etc/firejail/autokey-shell.profile
 etc/firejail/avidemux.profile
+etc/firejail/avidemux3_cli.profile
+etc/firejail/avidemux3_jobs_qt5.profile
+etc/firejail/avidemux3_qt5.profile
 etc/firejail/aweather.profile
 etc/firejail/awesome.profile
 etc/firejail/b2sum.profile
@@ -170,6 +173,8 @@ etc/firejail/cargo.profile
 etc/firejail/catfish.profile
 etc/firejail/cawbird.profile
 etc/firejail/celluloid.profile
+etc/firejail/chafa.profile
+etc/firejail/chatterino.profile
 etc/firejail/checkbashisms.profile
 etc/firejail/cheese.profile
 etc/firejail/cherrytree.profile
@@ -180,6 +185,7 @@ etc/firejail/chromium-common.profile
 etc/firejail/chromium-freeworld.profile
 etc/firejail/chromium.profile
 etc/firejail/cin.profile
+etc/firejail/cinelerra-gg.profile
 etc/firejail/cinelerra.profile
 etc/firejail/cksum.profile
 etc/firejail/clamav.profile
@@ -279,6 +285,7 @@ etc/firejail/ebook-edit.profile
 etc/firejail/ebook-meta.profile
 etc/firejail/ebook-polish.profile
 etc/firejail/ebook-viewer.profile
+etc/firejail/electron-hardened.inc.profile
 etc/firejail/electron-mail.profile
 etc/firejail/electron.profile
 etc/firejail/electrum.profile
@@ -378,6 +385,7 @@ etc/firejail/gconf-merge-tree.profile
 etc/firejail/gconf.profile
 etc/firejail/gconfpkg.profile
 etc/firejail/gconftool-2.profile
+etc/firejail/gdu.profile
 etc/firejail/geany.profile
 etc/firejail/geary.profile
 etc/firejail/gedit.profile
@@ -451,6 +459,7 @@ etc/firejail/gnome_games-common.profile
 etc/firejail/gnote.profile
 etc/firejail/gnubik.profile
 etc/firejail/godot.profile
+etc/firejail/godot3.profile
 etc/firejail/goldendict.profile
 etc/firejail/goobox.profile
 etc/firejail/google-chrome-beta.profile
@@ -476,6 +485,7 @@ etc/firejail/gsettings-schema-convert.profile
 etc/firejail/gsettings.profile
 etc/firejail/gtar.profile
 etc/firejail/gthumb.profile
+etc/firejail/gtk-lbry-viewer.profile
 etc/firejail/gtk-pipe-viewer.profile
 etc/firejail/gtk-straw-viewer.profile
 etc/firejail/gtk-update-icon-cache.profile
@@ -511,7 +521,6 @@ etc/firejail/iceweasel.profile
 etc/firejail/idea.profile
 etc/firejail/idea.sh.profile
 etc/firejail/ideaIC.profile
-etc/firejail/ids.config
 etc/firejail/imagej.profile
 etc/firejail/img2txt.profile
 etc/firejail/impressive.profile
@@ -576,6 +585,7 @@ etc/firejail/kwin_x11.profile
 etc/firejail/kwrite.profile
 etc/firejail/latex-common.profile
 etc/firejail/latex.profile
+etc/firejail/lbry-viewer.profile
 etc/firejail/lbunzip2.profile
 etc/firejail/lbzcat.profile
 etc/firejail/lbzip2.profile
@@ -593,6 +603,7 @@ etc/firejail/links-common.profile
 etc/firejail/links.profile
 etc/firejail/links2.profile
 etc/firejail/linphone.profile
+etc/firejail/linuxqq.profile
 etc/firejail/lmms.profile
 etc/firejail/lobase.profile
 etc/firejail/localc.profile
@@ -635,6 +646,7 @@ etc/firejail/lzop.profile
 etc/firejail/macrofusion.profile
 etc/firejail/magicor.profile
 etc/firejail/make.profile
+etc/firejail/makedeb.profile
 etc/firejail/makepkg.profile
 etc/firejail/man.profile
 etc/firejail/manaplus.profile
@@ -855,6 +867,7 @@ etc/firejail/qlipper.profile
 etc/firejail/qmmp.profile
 etc/firejail/qnapi.profile
 etc/firejail/qpdfview.profile
+etc/firejail/qq.profile
 etc/firejail/qrencode.profile
 etc/firejail/qt-faststart.profile
 etc/firejail/qtox.profile
@@ -948,6 +961,7 @@ etc/firejail/spotify.profile
 etc/firejail/sqlitebrowser.profile
 etc/firejail/ssh-agent.profile
 etc/firejail/ssh.profile
+etc/firejail/ssmtp.profile
 etc/firejail/standardnotes-desktop.profile
 etc/firejail/start-tor-browser.desktop.profile
 etc/firejail/start-tor-browser.profile
@@ -984,6 +998,7 @@ etc/firejail/telegram-desktop.profile
 etc/firejail/telegram.profile
 etc/firejail/telnet.profile
 etc/firejail/terasology.profile
+etc/firejail/tesseract.profile
 etc/firejail/tex.profile
 etc/firejail/textmaker18.profile
 etc/firejail/textmaker18free.profile
@@ -1080,6 +1095,7 @@ etc/firejail/trojita.profile
 etc/firejail/truecraft.profile
 etc/firejail/ts3client_runscript.sh.profile
 etc/firejail/tshark.profile
+etc/firejail/tuir.profile
 etc/firejail/tutanota-desktop.profile
 etc/firejail/tuxguitar.profile
 etc/firejail/tvbrowser.profile
@@ -1168,6 +1184,7 @@ etc/firejail/xfce4-notes.profile
 etc/firejail/xfce4-screenshooter.profile
 etc/firejail/xiphos.profile
 etc/firejail/xlinks.profile
+etc/firejail/xlinks2.profile
 etc/firejail/xmms.profile
 etc/firejail/xmr-stak.profile
 etc/firejail/xonotic-glx.profile
@@ -1252,6 +1269,7 @@ usr/lib/firejail/fnet
 usr/lib/firejail/fnetfilter
 usr/lib/firejail/fnettrace
 usr/lib/firejail/fnettrace-dns
+usr/lib/firejail/fnettrace-icmp
 usr/lib/firejail/fnettrace-sni
 usr/lib/firejail/fsec-optimize
 usr/lib/firejail/fsec-print
@@ -1289,6 +1307,9 @@ usr/share/doc/firejail/RELNOTES
 usr/share/doc/firejail/profile.template
 usr/share/doc/firejail/redirect_alias-profile.template
 usr/share/doc/firejail/syscalls.txt
+usr/share/gtksourceview-5/
+usr/share/gtksourceview-5/language-specs/
+usr/share/gtksourceview-5/language-specs/firejail-profile.lang
 usr/share/man/
 usr/share/man/man1/
 usr/share/man/man1/firecfg.1.gz
