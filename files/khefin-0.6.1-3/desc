@@ -14,19 +14,19 @@ khefin
 A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension
 
 %CSIZE%
-31805
+31776
 
 %ISIZE%
-68011
+68019
 
 %MD5SUM%
-f76ef2480e07e7f65413cae8c9218be9
+8c42fb269022dcd8339a2e44f201799f
 
 %SHA256SUM%
-ea8caa3d4f5565ee6a29abf961371018e48fc15dcf9932fd4122767546fc53ee
+b5d4416f09f9120af0a47f706483a2cd06d4641283f64ddce4233e091b437c6c
 
 %PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmMX8iQACgkQFW138LsgdFDf4Qf/eWGwZEjl2xN1E8jY37X0U/TaaHNX6Ep5EIK490uar19P6/La8EmDb3ZHwxgx/W+Qkoq1FlUk5ylX5dD/mq59Zyri8oivGzi6PhnzKCJg/vVHl5KukI/rMZkOpNb4D9PaIid/CYxqUm2dwdDQwzAEvJLsc1DeaWgUqjZtEf/bEI2d4YcxTuMaeKK79xoPU2tboEREzIAWD+DyGeI3GMNunFhvel5y/c7AyY4EZEiEBtgL0O+Lp66V9rBZ9UvWze0gzuFjjAwKsYWCvZ919xiuLm2ih65qqaGOIUyyRy/C5mPr4hl69CR2PoiBGAUqadz/GEBhZkTN9Rs8iwBfAxBkNA==
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmPp4eIACgkQFW138LsgdFDdZwf+IWd+H4LSWFYXJvTpHrmFjTqx8KjBdExtI53aroU6KK49aOPTyd3eQn1FdwjTKviHHaoNWqkk8JJqditK9dftgUDRg2CHmkyBdEzbh4Q+tkC/JLcysJssGKyHK+ycT2aIKocLF6HWCvwtTlbAHSbPY04RE393wZiNhPMxCfy5A+TDZ+375uRmW+5LeXDU2FPgV1vfrRX8Xgi7lTFkg89j682E49+GzBfjFEsDgEdnlCFBZqn7weFN4r9iI0owv5y9tWDGS91UxJTZNtqiLIGWEdqhkOj77iOQCSMtxtXwzvJK9DbYP7IRW6aU5qvBN5K/RYAaI4PCZ3oJzvwJOqfcgw==
 
 %URL%
 https://github.com/mjec/khefin
@@ -38,10 +38,10 @@ GPL3
 x86_64
 
 %BUILDDATE%
-1662513692
+1676272091
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/3004440571 <pkgbuild@djpohly.com>
+https://github.com/djpohly/PKGBUILD/actions/runs/4160983389 <pkgbuild@djpohly.com>
 
 %REPLACES%
 fido2-hmac-secret
