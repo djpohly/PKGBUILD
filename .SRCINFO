@@ -1,0 +1,16 @@
+pkgbase = python-ics
+	pkgdesc = Pythonic and easy iCalendar library
+	pkgver = 0.7
+	pkgrel = 2
+	url = http://pypi.python.org/pypi/ics/
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-arrow
+	depends = python-dateutil
+	depends = python-tatsu
+	source = python-ics-0.7.tar.gz::https://github.com/C4ptainCrunch/ics.py/archive/v0.7.tar.gz
+	sha512sums = b74e04f7dff6f29877e3250117cccd7ae7ca923e2f0332177e0dd4a13d7e0d079342829d5a035a7d00946d4416d3d15e94e1d468ce241bb35cddd33ba2940716
+
+pkgname = python-ics
