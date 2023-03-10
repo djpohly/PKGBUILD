@@ -1,0 +1,77 @@
+%FILENAME%
+zoom-5.13.11-1-x86_64.pkg.tar.zst
+
+%NAME%
+zoom
+
+%BASE%
+zoom
+
+%VERSION%
+5.13.11-1
+
+%DESC%
+Video Conferencing and Web Conferencing Service
+
+%CSIZE%
+224875495
+
+%ISIZE%
+617899059
+
+%MD5SUM%
+61bf64befdd0c8e660301a5419f14a37
+
+%SHA256SUM%
+4e8d5fe1371184325b9e55fe06ffc97ffe4b915553978dd4d486ce9161e5233c
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmQKd20ACgkQFW138LsgdFBAbwgAgMcE9zI0LQenA8RE/FI78Y0aWIgJZcHdU8SqWFnC3v+VBWrMjb1ofDmUfN4Sk9oc8y2QybvRZa+8xWnJ+6N0lSpnM8yV/zqpp6K8ZS9ZvI706nV07aB12bfS+7pIb6Vb511LJIL9kw52pXIkrCI53NKGtkd2sGxOVjV41zh+un/1PXtl+Ejx96Y3hzXjfaHqeAK5QbnGKnlBgQee5OaQKJlK/jjzaKabLdgt+BTpLwVGMQ865rmkJUzc/+S0y22elqw/VtmLwhdx8JgtRIOm6XidZfJpzZBrmT/J9Kq0zrCEJkiPiRaL8GxzjFZnWaDbOr5+Y8Aulpc5+LzpxZJZBw==
+
+%URL%
+https://zoom.us/
+
+%LICENSE%
+custom
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1678407498
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/4380012031 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+fontconfig
+glib2
+libpulse
+libsm
+ttf-font
+libx11
+libxtst
+libxcb
+libxcomposite
+libxfixes
+libxi
+libxcursor
+libxkbcommon-x11
+libxrandr
+libxrender
+libxshmfence
+libxslt
+mesa
+nss
+xcb-util-image
+xcb-util-keysyms
+dbus
+libdrm
+
+%OPTDEPENDS%
+pulseaudio-alsa: audio via PulseAudio
+qt5-webengine: SSO login support
+ibus: remote control
+picom: extra compositor needed by some window managers for screen sharing
+xcompmgr: extra compositor needed by some window managers for screen sharing
+
