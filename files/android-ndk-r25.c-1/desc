@@ -1,0 +1,58 @@
+%FILENAME%
+android-ndk-r25.c-1-x86_64.pkg.tar.zst
+
+%NAME%
+android-ndk
+
+%BASE%
+android-ndk
+
+%VERSION%
+r25.c-1
+
+%DESC%
+Android C/C++ developer kit
+
+%CSIZE%
+500166891
+
+%ISIZE%
+1703416562
+
+%MD5SUM%
+a8567441a6108d4a941258e935069f30
+
+%SHA256SUM%
+6145cbcf1f64b53c86ed6dc485c54a613a5b9d0b885ce1de1018fd55a467e55f
+
+%PGPSIG%
+iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmQOKdgACgkQFW138LsgdFDd+ggAwW6mAs5HAtbM/RoWlHknTFmxMvJ2+Q0Dx0WdGkHHN/XTGVBJr+Fv0bLaka8R1Bdt7OsXMqH4Ah0MTMzgqp3uQadknjIF6CWwjyFCtE1cWUIhlgyzrrsJU4G6qlSPH0kviN3DdjT1WEQBdUaKYIZusb3O9ukzNnSi2E1r2+CE9ffjp89Cx0bBWJIe4NidQ318UhRJtGX9NY4PiBhFf22I4KvhX1bXSusHs6xsFi6PlTIHoMeXWHbLHLqtW3kapJnZkvX1W2RtUse9SV/vVgvVmPa8DrTuYY3htWUmXrAkN/VW8wcVCr00iiqCOKKdZTE2Ar/7+2jgR7mUcKshiXQNOg==
+
+%URL%
+https://developer.android.com/ndk/
+
+%LICENSE%
+GPL
+LGPL
+custom
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1678649768
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/4399104300 <pkgbuild@djpohly.com>
+
+%REPLACES%
+android-ndk64
+
+%DEPENDS%
+glibc
+
+%OPTDEPENDS%
+ncurses5-compat-libs: for using gdb
+python2: various helper scripts
+python: various helper scripts
+
