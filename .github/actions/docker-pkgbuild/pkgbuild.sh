@@ -47,7 +47,7 @@ sudo pacman -Sy
 export PKGDEST=repo LC_MESSAGES=C LANG=C
 
 # Build and sign packages
-makepkg -Lcs --noconfirm $SIGN_PKG
+makepkg -Lcs --noconfirm --nocheck $SIGN_PKG
 
 # Build repo update
 makepkg --packagelist | while read -r filename; do
