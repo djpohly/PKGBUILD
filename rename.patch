@@ -1,0 +1,55 @@
+diff -ur megatools-1.11.1.20230212.orig/tools/dl.c megatools-1.11.1.20230212/tools/dl.c
+--- megatools-1.11.1.20230212.orig/tools/dl.c	2023-02-12 13:39:35.000000000 -0600
++++ megatools-1.11.1.20230212/tools/dl.c	2023-03-30 08:58:58.826125979 -0500
+@@ -59,16 +59,39 @@
+ 
+ // download operation
+ 
++// free return value with g_free()
++static gchar *g_str_splitext(gchar *fname)
++{
++	gchar *dot = g_strrstr(fname, ".");
++	if (!dot)
++		return NULL;
++	*dot = '\0';
++	return g_strdup(dot + 1);
++}
++
+ static gboolean dl_sync_file(struct mega_node *node, GFile *file)
+ {
+ 	gc_error_free GError *local_err = NULL;
+ 	gc_object_unref GFile *parent = g_file_get_parent(file);
+ 	gc_free gchar *local_path = g_file_get_path(file);
+ 	gc_free gchar *parent_path = g_file_get_path(parent);
++	gc_object_unref GFile *realfile = g_object_ref(file);
++	gint retries = 0;
++
++	if (g_file_query_exists(realfile, NULL)) {
++		g_printerr("WARNING: File already exists at %s\n", local_path);
+ 
+-	if (g_file_query_exists(file, NULL)) {
+-		g_printerr("ERROR: File already exists at %s\n", local_path);
+-		return FALSE;
++		gc_free gchar *basename = g_file_get_basename(realfile);
++		gc_free gchar *ext = g_str_splitext(basename);
++		do {
++			retries++;
++			gchar *new_basename = g_strdup_printf("%s %d.%s", basename, retries, ext);
++			g_object_unref(realfile);
++			realfile = g_file_get_child(parent, new_basename);
++			g_free(new_basename);
++		} while (g_file_query_exists(realfile, NULL));
++		g_free(local_path);
++		local_path = g_file_get_path(realfile);
+ 	}
+ 
+ 	if (!g_file_query_exists(parent, NULL)) {
+@@ -86,7 +109,7 @@
+ 	if (!opt_noprogress)
+ 		g_print("F %s\n", local_path);
+ 
+-	if (!mega_session_get(s, file, node, &local_err)) {
++	if (!mega_session_get(s, realfile, node, &local_err)) {
+ 		if (!opt_noprogress && tool_is_stdout_tty())
+ 			g_print("\r" ESC_CLREOL);
+ 		gc_free gchar* remote_path = mega_node_get_path_dup(node);
