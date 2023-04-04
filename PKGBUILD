@@ -324,6 +324,6 @@ package() {
 }
 
 source+=(accelerators.patch)
-sha256sums+=('2c13e39810b04df4a510665228ba442193932632c82bec178a468c33715cb237')
+sha256sums+=('43545ed267c77133caac5cd07ae3df56f91501638179e1e9d1067b2f7e883ffd')
 
 # vim:set ts=2 sw=2 et:
