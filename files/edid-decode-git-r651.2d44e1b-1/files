@@ -1,0 +1,11 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/edid-decode
+usr/share/
+usr/share/licenses/
+usr/share/licenses/edid-decode-git/
+usr/share/licenses/edid-decode-git/LICENSE
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/edid-decode.1.gz
