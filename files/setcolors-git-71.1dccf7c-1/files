@@ -1,0 +1,11 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/setcolors
+usr/share/
+usr/share/licenses/
+usr/share/licenses/setcolors-git/
+usr/share/licenses/setcolors-git/LICENSE
+usr/share/man/
+usr/share/man/man1/
+usr/share/man/man1/setcolors.1.gz
