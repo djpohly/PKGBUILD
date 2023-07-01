@@ -23,7 +23,7 @@ pkgname=(
   djp-meta-remote
 )
 pkgver=0.2
-pkgrel=27
+pkgrel=28
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -265,15 +265,14 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
   pandoc
   pandoc-crossref
   python-pandocfilters
-  tectonic
-  texlive-core
+  texlive-basic
   texlive-fontsextra
   texlive-humanities
   texlive-latexextra
   texlive-luximono
+  texlive-mathscience
   texlive-pictures
   texlive-publishers
-  texlive-science
   xfig
 ); }
 
