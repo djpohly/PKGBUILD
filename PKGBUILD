@@ -73,14 +73,14 @@ b2sums=('0926f97a79d7795f3bd8ea71841a072b8f725800d9b33eaf6fc54c62e67f53e41faa555
 validpgpkeys=(163EB50119225DB3DF8F49EA17ACBA8DFA970E17) # Richard Hughes <richard@hughsie.com>
 
 build() {
-        -D systemd=false \
-        -D offline=false \
-        -D elogind=true \
   artix-meson ${pkgname}-${pkgver} build \
     -D b_lto=false \
     -D docs=enabled \
     -D plugin_intel_spi=true \
     -D supported_build=enabled \
+    -D systemd=false \
+    -D offline=false \
+    -D elogind=true \
     -D efi_binary=false
   meson compile -C build
 }
