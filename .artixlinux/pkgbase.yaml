@@ -1,7 +1,7 @@
 ---
 pkgbase:
   name: fwupd
-  version: 1.9.5-1
+  version: 1.9.5-2
   arch:
     - x86_64
   pkgname:
@@ -31,9 +31,9 @@ repos:
     version: null
     packages: []
   world:
-    version: 1.9.5-1
+    version: 1.9.5-2
     packages:
-      - fwupd-1.9.5-1-x86_64.pkg.tar.zst
+      - fwupd-1.9.5-2-x86_64.pkg.tar.zst
   lib32-goblins:
     version: null
     packages: []
