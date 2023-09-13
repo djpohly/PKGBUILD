@@ -23,7 +23,7 @@ pkgname=(
   djp-meta-remote
 )
 pkgver=0.2
-pkgrel=28
+pkgrel=29
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
@@ -134,6 +134,7 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
   tigervnc
   ttf-et-book
   wmname
+  x11-touchscreen-calibrator
   xcursor-vanilla-dmz
   xf86-input-joystick
   xorg-server
@@ -161,7 +162,6 @@ package_djp-meta-laptop() { pkgdesc="Metapackage for laptops"; depends=(
   powertop
   tlp
   wpa_supplicant
-  x11-touchscreen-calibrator
   xorg-xbacklight
 ); }
 
@@ -216,13 +216,14 @@ package_djp-meta-devel() { pkgdesc="Metapackage for development systems"; depend
 
 package_djp-meta-players() { pkgdesc="Metapackage for media players"; depends=(
   alsa-utils
-  calf
-  jalv
   mpc
   mpd
   mpv
+  pipewire
+  pipewire-pulse
   sox
   streamlink
+  wireplumber
   yt-dlp
   yt-dlp-drop-in
 ); }
@@ -248,7 +249,7 @@ package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
   elinks
   firejail
   khal
-  libreoffice
+  libreoffice-fresh
   mutt
   mutt-ics
   teams
@@ -258,7 +259,6 @@ package_djp-meta-office() { pkgdesc="Metapackage for office work"; depends=(
 package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
   fig2dev
   gnuplot
-  latex-template-acm
   libreoffice-fresh
   make
   minted
@@ -269,7 +269,6 @@ package_djp-meta-latex() { pkgdesc="Metapackage for LaTeX"; depends=(
   texlive-fontsextra
   texlive-humanities
   texlive-latexextra
-  texlive-luximono
   texlive-mathscience
   texlive-pictures
   texlive-publishers
@@ -316,7 +315,6 @@ package_djp-meta-android() { pkgdesc="Metapackage for Android development"; depe
 package_djp-meta-java() { pkgdesc="Metapackage for Java development"; depends=(
   ant
   eclipse-java
-  fernflower-git
   gradle
   jad
   junit
