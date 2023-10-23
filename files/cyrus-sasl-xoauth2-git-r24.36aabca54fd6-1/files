@@ -1,0 +1,11 @@
+%FILES%
+usr/
+usr/lib/
+usr/lib/sasl2/
+usr/lib/sasl2/libxoauth2.so
+usr/lib/sasl2/libxoauth2.so.0
+usr/lib/sasl2/libxoauth2.so.0.0.0
+usr/share/
+usr/share/licenses/
+usr/share/licenses/cyrus-sasl-xoauth2-git/
+usr/share/licenses/cyrus-sasl-xoauth2-git/LICENSE
