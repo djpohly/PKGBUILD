@@ -4,8 +4,8 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=fwupd
-pkgver=1.9.5
-pkgrel=2
+pkgver=1.9.7
+pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url="https://github.com/fwupd/fwupd"
@@ -69,10 +69,10 @@ source=(
   "https://github.com/fwupd/fwupd/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
   fwupd.sysusers
 )
-sha512sums=('19c152746d4d44f00c5bf3ed36b97249cb0a8fdedab351706a7d4e761fb142d096351555392b535ce976cb9e925505246542525a90319a2560f753a675ff26cf'
+sha512sums=('ad27addd5daadd62ca9ac1fd3ac28d8e68e2a3054f112258dfe77d67f63703072290043c22b2317a1149f477506b0a4e57982dba7fa1c7c895103b207f703bf8'
             'SKIP'
             '637203080b55eda74a659f58c853a9a723a2dad5da70915b2b0e036c6145a649468ebec700cc83975d9cb5378b9dced8b3a3b26bdbcc75ddc774837355e75deb')
-b2sums=('0926f97a79d7795f3bd8ea71841a072b8f725800d9b33eaf6fc54c62e67f53e41faa5558979a53b0e83094d8dfd3b3263bc462380498c00484e29500ca6baf8c'
+b2sums=('a222420aa957e20cb52e8f09270f89683d3bebb51d79940b27754ba1dbaa9b5ca46a9b10225c9f9c42ad28b7deb2dd040e3366d43568f19b1ad803572c924bd5'
         'SKIP'
         'e65ca7da22a20a40882cfc1fe4479643f9a38c90a4f2c3e71e6e5e3de1d6db212a0f17d600097619fe3cdb0a9b860422f8b0b9a9d45441518e51a7eb12a918bb')
 validpgpkeys=(163EB50119225DB3DF8F49EA17ACBA8DFA970E17) # Richard Hughes <richard@hughsie.com>
@@ -96,10 +96,15 @@ check() {
 
 package() {
   DESTDIR="${pkgdir}" meson install -C build
+  # Add fwupd user https://bugs.archlinux.org/task/79653
+  install -D -m644 fwupd.sysusers "${pkgdir}"/usr/lib/sysusers.d/fwupd.conf
   # Fixup mode to match polkit
   install -d -o root -g 102 -m 750 "${pkgdir}"/usr/share/polkit-1/rules.d
   # Remove the tests
   rm -r "${pkgdir}"/usr/share/installed-tests/
   mv "${pkgdir}"/usr/bin/{,fwupd-}dbxtool
   mv "${pkgdir}"/usr/share/man/man1/{,fwupd-}dbxtool.1
+  # Remove msr module-load config as it is built-in
+  rm "${pkgdir}"/usr/lib/modules-load.d/fwupd-msr.conf
+  rmdir "${pkgdir}"/usr/lib/modules-load.d
 }
