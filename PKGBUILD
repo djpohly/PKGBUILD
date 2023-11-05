@@ -81,12 +81,14 @@ build() {
   artix-meson ${pkgname}-${pkgver} build \
     -D b_lto=false \
     -D docs=enabled \
+    -D plugin_amdgpu=disabled \
+    -D launchd=disabled \
     -D plugin_intel_spi=true \
     -D supported_build=enabled \
-    -D systemd=false \
-    -D offline=false \
-    -D elogind=true \
-    -D efi_binary=false
+    -D systemd=disabled \
+    -D offline=disabled \
+    -D elogind=enabled \
+    -D efi_binary=false \
   meson compile -C build
 }
 
