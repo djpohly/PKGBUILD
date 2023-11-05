@@ -88,7 +88,7 @@ build() {
     -D systemd=disabled \
     -D offline=disabled \
     -D elogind=enabled \
-    -D efi_binary=false \
+    -D efi_binary=false
   meson compile -C build
 }
 
