@@ -1,28 +1,29 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Gordin <9ordin @t gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
 
 pkgname=android-sdk-platform-tools
-pkgver=r28.0.0
-pkgrel=1
+pkgver=34.0.5
+pkgrel=2
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 arch=('x86_64')
 url='http://developer.android.com/sdk/index.html'
 license=('custom')
-depends_x86_64=('zlib' 'ncurses')
+depends=('zlib' 'ncurses')
 provides=('adb' 'android-tools')
 conflicts=('adb')
 install="${pkgname}.install"
-source=("https://dl.google.com/android/repository/platform-tools_${pkgver}-linux.zip"
-        "adb.service"
-        "license.html")
-sha1sums=('f944e69bc96ad2984a7e19febb3f3569b216699f'
+source=("https://dl.google.com/android/repository/platform-tools_r${pkgver}-linux.zip"
+        'adb.service'
+        'license.html'
+        'package.xml')
+sha1sums=('96097475cf7b279fdd8f218f5d043ffe94104ec3'
           '49a40c129199844603afe71fce69c0908e062393'
-          'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa')
+          'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa'
+          '27f9b39289da6cc53f3aa934e46ceebc1d995e0d')
 
 package() {
-
   install -Dm644 "${srcdir}/adb.service" "${pkgdir}/usr/lib/systemd/system/adb.service"
   install -Dm644 "${srcdir}/license.html" "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
 
@@ -34,4 +35,5 @@ package() {
   install -d "${pkgdir}/opt/android-sdk/"
   cp -a "${srcdir}/platform-tools" "${pkgdir}/opt/android-sdk/platform-tools"
   chmod -R +rX "${pkgdir}/opt/android-sdk/platform-tools"
+  install -Dm755 'package.xml' "${pkgdir}/opt/android-sdk/platform-tools/package.xml"
 }
