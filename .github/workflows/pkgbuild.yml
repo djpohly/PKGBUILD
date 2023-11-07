@@ -1,0 +1,61 @@
+name: Build package
+
+env:
+  REPO_NAME: PKGBUILD
+  RELEASE_NAME: repository
+  KEY_FILE: signing.key.enc
+
+on:
+  push:
+    branches-ignore:
+      - master
+      - main
+      - pkgbase
+  # Allow manual trigger as well
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  pkgbuild:
+    name: Build package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
+        with:
+          ref: master
+          path: master
+
+      - uses: ./master/.github/actions/aes256-decrypt
+        with:
+          infile: ./master/signing.key.enc
+          outfile: ./master/signing.key
+          key: ${{secrets.ENCRYPTION_KEY}}
+          iv: ${{secrets.ENCRYPTION_IV}}
+
+      - uses: ./master/.github/actions/docker-pkgbuild
+        with:
+          reposlug: ${{github.repository}}
+          release: ${{env.RELEASE_NAME}}
+          runid: ${{github.run_id}}
+
+      - uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          tag: ${{env.RELEASE_NAME}}
+          file: 'repo/*'
+          file_glob: true
+          overwrite: true
+
+      - uses: ./master/.github/actions/commitpkg
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+
+      - uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{secrets.PUSH_TOKEN}}
+          event-type: rebuild
