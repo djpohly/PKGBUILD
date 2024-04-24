@@ -1,14 +1,14 @@
 ---
 pkgbase:
   name: fwupd
-  version: 1.9.16-1
+  version: 1.9.18-2
   arch:
     - x86_64
   pkgname:
     - fwupd
     - fwupd-docs
 actions:
-  addRepo: world
+  addRepo: world-gremlins
   removeRepo: null
   triggersBuild: true
   triggersRebuild: false
@@ -29,8 +29,10 @@ repos:
     version: null
     packages: []
   world-gremlins:
-    version: null
-    packages: []
+    version: 1.9.18-2
+    packages:
+      - fwupd-1.9.18-2-x86_64.pkg.tar.zst
+      - fwupd-docs-1.9.18-2-x86_64.pkg.tar.zst
   world:
     version: 1.9.16-1
     packages:
