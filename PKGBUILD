@@ -9,7 +9,7 @@ pkgname=(
   fwupd-docs
 )
 pkgver=1.9.18
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url='https://github.com/fwupd/fwupd'
@@ -153,8 +153,8 @@ package_fwupd() {
   mv "${pkgdir}"/usr/bin/{,fwupd-}dbxtool
   mv "${pkgdir}"/usr/share/man/man1/{,fwupd-}dbxtool.1
   # Remove msr module-load config as it is built-in
-  rm "${pkgdir}"/usr/lib/modules-load.d/fwupd-msr.conf
-  rmdir "${pkgdir}"/usr/lib/modules-load.d
+  # rm "${pkgdir}"/usr/lib/modules-load.d/fwupd-msr.conf
+  # rmdir "${pkgdir}"/usr/lib/modules-load.d
 
   _pick docs "${pkgdir}"/usr/share/doc/{,fwupd/}{libfwupdplugin,libfwupd}
 }
