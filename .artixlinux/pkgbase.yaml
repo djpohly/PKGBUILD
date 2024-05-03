@@ -1,7 +1,7 @@
 ---
 pkgbase:
   name: fwupd
-  version: 1.9.18-2.1
+  version: 1.9.19-1
   arch:
     - x86_64
   pkgname:
@@ -9,11 +9,11 @@ pkgbase:
     - fwupd-docs
 actions:
   addRepo: world
-  removeRepo: world-gremlins
-  triggersBuild: false
+  removeRepo: null
+  triggersBuild: true
   triggersRebuild: false
   triggersRepoAdd: true
-  triggersRepoRemove: true
+  triggersRepoRemove: false
   triggersNoCheck: false
 repos:
   system-goblins:
@@ -32,10 +32,10 @@ repos:
     version: null
     packages: []
   world:
-    version: 1.9.18-2.1
+    version: 1.9.19-1
     packages:
-      - fwupd-1.9.18-2.1-x86_64.pkg.tar.zst
-      - fwupd-docs-1.9.18-2.1-x86_64.pkg.tar.zst
+      - fwupd-1.9.19-1-x86_64.pkg.tar.zst
+      - fwupd-docs-1.9.19-1-x86_64.pkg.tar.zst
   lib32-goblins:
     version: null
     packages: []
