@@ -1,7 +1,7 @@
 pkgbase = gqrx
 	pkgdesc = Interactive SDR receiver waterfall for many devices.
 	pkgver = 2.17.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gqrx.dk/
 	arch = x86_64
 	license = GPL3
