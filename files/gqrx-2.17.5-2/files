@@ -1,0 +1,14 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/gqrx
+usr/share/
+usr/share/applications/
+usr/share/applications/dk.gqrx.gqrx.desktop
+usr/share/icons/
+usr/share/icons/hicolor/
+usr/share/icons/hicolor/scalable/
+usr/share/icons/hicolor/scalable/apps/
+usr/share/icons/hicolor/scalable/apps/gqrx.svg
+usr/share/metainfo/
+usr/share/metainfo/dk.gqrx.gqrx.appdata.xml
