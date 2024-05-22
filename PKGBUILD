@@ -1,3 +1,5 @@
+# shellcheck disable=SC2034,SC2154,SC2164
+
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
  
@@ -9,84 +11,94 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=111.0.5563.146
-pkgrel=1
+pkgver=125.0.6422.60
+pkgrel=3
 _launcher_ver=8
-_gcc_patchset=2
 _manual_clone=0
+_system_clang=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'qt5-base' 'java-runtime-headless' 'git')
+             'rust' 'qt5-base' 'qt6-base' 'java-runtime-headless' 'git')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
-            'qt5-base: enable Qt5 with --enable-features=AllowQt'
+            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        sql-relax-constraints-on-VirtualCursor-layout.patch
-        disable-GlobalMediaControlsCastStartStop.patch
+        https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${pkgver%%.*}/chromium-patches-${pkgver%%.*}.tar.bz2
+        fix-a-missing-build-dependency.patch
+        drop-flag-unsupported-by-clang17.patch
+        compiler-rt-adjust-paths.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('1e701fa31b55fa0633c307af8537b4dbf67e02d8cad1080c57d845ed8c48b5fe'
+sha256sums=('93f5850101225945d7ec80959b38460e6a63777055bf2d9e893860c33cb60080'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
-            'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
-            '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            '58c8787bd215c4818893405dbb88c17b08bf13039fb5fbcb9dfe95ac51a86f3e'
+            '75e1482d1b27c34ebe9d4bf27104fedcc219cdd95ce71fc41e77a486befd3f93'
+            '3bd35dab1ded5d9e1befa10d5c6c4555fe0a76d909fb724ac57d0bf10cb666c1'
+            'b3de01b7df227478687d7517f61a777450dca765756002c80c4915f271e2d961'
+            '69d2f076223cab0cf1094ae58c39b5687a98f69bf4545414a35f6a4d2708ed83')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
   makedepends+=('python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
-provides=('chromium')
-conflicts=('chromium')
+provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
+conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
-source=(${source[@]}
-        $pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
-        ozone-add-va-api-support-to-wayland.patch
-        vaapi-add-av1-support.patch
-        remove-main-main10-profile-limit.patch)
-sha256sums=(${sha256sums[@]}
-            'df09f3adeb27ac6c619522ea524be0450cfe5324599eb2d5462f1c63e661a2f8'
-            'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
-            'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
-            'fc810e3c495c77ac60b383a27e48cf6a38b4a95b65dd2984baa297c5df83133c')
+optdepends=("${optdepends[@]}"
+            'chromium-extension-web-store: Web Store Functionality')
+source=("${source[@]}"
+        "$pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
+        ninja-1.11.patch
+        0001-vaapi-flag-ozone-wayland.patch
+        0001-adjust-buffer-format-order.patch
+        0001-enable-linux-unstable-deb-target.patch
+        0001-ozone-wayland-implement-text_input_manager_v3.patch
+        0001-ozone-wayland-implement-text_input_manager-fixes.patch)
+sha256sums=("${sha256sums[@]}"
+            '306409b826eeaed7484ebc8283eb538f51d364ef6ceeb35c178a44ff18dfb6e6'
+            '1a17064c2a2ba35fddca4f9a5f42a3eb386078a0ed8f9f38641543989b04c037'
+            '9a5594293616e1390462af1f50276ee29fd6075ffab0e3f944f6346cb2eb8aec'
+            '8ba5c67b7eb6cacd2dbbc29e6766169f0fca3bbb07779b1a0a76c913f17d343f'
+            '2a44756404e13c97d000cc0d859604d6848163998ea2f838b3b9bb2c840967e3'
+            'd9974ddb50777be428fd0fa1e01ffe4b587065ba6adefea33678e1b3e25d1285'
+            'a2da75d0c20529f2d635050e0662941c0820264ea9371eb900b9d90b5968fa6a')
  
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
   [dav1d]=dav1d
-  [ffmpeg]=ffmpeg
+  #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
-  [jsoncpp]=jsoncpp
-  [libaom]=aom
-  #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
+  #[jsoncpp]=jsoncpp  # needs libstdc++
+  #[libaom]=aom
+  #[libavif]=libavif  # needs https://github.com/AOMediaCodec/libavif/commit/5410b23f76
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
   #[libvpx]=libvpx
-  [libwebp]=libwebp
+  #[libwebp]=libwebp  # //third_party/libavif:libavif_enc needs //third_party/libwebp:libwebp_sharpyuv
   [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
-  [re2]=re2
-  [snappy]=snappy
-  [woff2]=woff2
+  #[re2]=re2          # needs libstdc++
+  #[snappy]=snappy    # needs libstdc++
+  #[woff2]=woff2      # needs libstdc++
   [zlib]=minizip
 )
 _unwanted_bundled_libs=(
@@ -125,18 +137,47 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../sql-relax-constraints-on-VirtualCursor-layout.patch
+  patch -Np1 -i ../fix-a-missing-build-dependency.patch
 
-  # Disable kGlobalMediaControlsCastStartStop by default
-  # https://crbug.com/1314342
-  patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
+  # Drop compiler flag that needs newer clang
+  patch -Np1 -i ../drop-flag-unsupported-by-clang17.patch
+
+  # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
+  patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../chromium-patches-*/chromium-117-material-color-include.patch
 
   # Custom Patches
-  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
-  patch -Np1 -i ../remove-main-main10-profile-limit.patch
-  patch -Np1 -i ../vaapi-add-av1-support.patch
+  sed -i '/^bool IsHevcProfileSupported(const VideoType& type) {$/{s++bool IsHevcProfileSupported(const VideoType\& type) { return true;+;h};${x;/./{x;q0};x;q1}' \
+			media/base/supported_types.cc
+
+  # Implement text_input_manager_v3
+  # https://chromium-review.googlesource.com/c/chromium/src/+/3750452
+  #patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager_v3.patch
+  #patch -Np1 -i ../0001-ozone-wayland-implement-text_input_manager-fixes.patch
+  patch -Np1 -i ../ninja-1.11.patch
+
+  # Enable VAAPI on Wayland
+  # https://discourse.ubuntu.com/t/chromium-hardware-accelerated-build-for-intel-based-platforms-available-for-beta-testing/35625
+  # https://git.launchpad.net/~chromium-team/chromium-browser/+git/snap-from-source/
+  # patch -Np1 -i ../0001-enable-linux-unstable-deb-target.patch
+  #patch -Np1 -i ../0001-adjust-buffer-format-order.patch
+  #patch -Np1 -i ../0001-vaapi-flag-ozone-wayland.patch
+
+  # Link to system tools required by the build
+  mkdir -p third_party/node/linux/node-linux-x64/bin
+  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/java third_party/jdk/current/bin/
+
+  if (( !_system_clang )); then
+    # Use prebuilt rust as system rust cannot be used due to the error:
+    #   error: the option `Z` is only accepted on the nightly compiler
+    ./tools/rust/update_rust.py
+
+    # To link to rust libraries we need to compile with prebuilt clang
+    ./tools/clang/scripts/update.py
+  fi
 
   # Set custom accelerators
   patch -Np1 -i ../accelerators.patch
@@ -151,11 +192,6 @@ prepare() {
   msg2 'Applying domain substitution'
   python "$_utils/domain_substitution.py" apply -r "$_ungoogled_repo/domain_regex.list" \
     -f "$_ungoogled_repo/domain_substitution.list" -c domainsubcache.tar.gz ./
-
-  # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin
-  ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
-  ln -s /usr/bin/java third_party/jdk/current/bin/
 
   # Remove bundled libraries for which we will use the system copies; this
   # *should* do what the remove_bundled_libraries.py script does, with the
@@ -179,19 +215,24 @@ build() {
 
   cd chromium-$pkgver
 
-  export CC=clang
-  export CXX=clang++
-  export AR=ar
-  export NM=nm
+  if (( _system_clang )); then
+    export CC=clang
+    export CXX=clang++
+    export AR=ar
+    export NM=nm
+  else
+    local _clang_path="$PWD/third_party/llvm-build/Release+Asserts/bin"
+    export CC=$_clang_path/clang
+    export CXX=$_clang_path/clang++
+    export AR=$_clang_path/llvm-ar
+    export NM=$_clang_path/llvm-nm
+  fi
 
   local _flags=(
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
-    'clang_base_path="/usr"'
-    'clang_use_chrome_plugins=false'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
-    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'treat_warnings_as_errors=false'
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
@@ -199,18 +240,40 @@ build() {
     'proprietary_codecs=true'
     'rtc_use_pipewire=true'
     'link_pulseaudio=true'
-    'use_custom_libcxx=false'
-    'use_gnome_keyring=false'
+    'use_custom_libcxx=true' # https://github.com/llvm/llvm-project/issues/61705
     'use_sysroot=false'
     'use_system_libffi=true'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
+    'use_qt6=true'
+    'moc_qt6_path="/usr/lib/qt6"'
     "google_api_key=\"$_google_api_key\""
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
+  fi
+
+  if (( _system_clang )); then
+     local _clang_version=$(
+       clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+
+    _flags+=(
+      'clang_base_path="/usr"'
+      'clang_use_chrome_plugins=false'
+      "clang_version=\"$_clang_version\""
+      'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
+    )
+
+    # Allow the use of nightly features with stable Rust compiler
+    # https://github.com/ungoogled-software/ungoogled-chromium/pull/2696#issuecomment-1918173198
+    export RUSTC_BOOTSTRAP=1
+
+    _flags+=(
+      'rust_sysroot_absolute="/usr"'
+      "rustc_version=\"$(rustc --version)\""
+    )
   fi
 
   # enable HEVC decoding
@@ -291,6 +354,7 @@ package() {
     chrome_200_percent.pak
     chrome_crashpad_handler
     libqt5_shim.so
+    libqt6_shim.so
     resources.pak
     v8_context_snapshot.bin
 
@@ -300,6 +364,7 @@ package() {
 
     # SwiftShader ICD
     libvk_swiftshader.so
+    libvulkan.so.1
     vk_swiftshader_icd.json
   )
 
