@@ -50,7 +50,8 @@ export PKGDEST=repo LC_MESSAGES=C LANG=C
 makepkg -Lcs --noconfirm --nocheck $SIGN_PKG
 
 # Build repo update
-makepkg --packagelist | while read -r filename; do
+# HACK: why does `makepkg --packagelist` include debug here if not built above?
+makepkg --packagelist | grep -v -- '-debug-' | while read -r filename; do
   newfname=${filename//:/.}
   if [[ "$filename" != "$newfname" ]]; then
     mv -n "$filename" "$newfname"
