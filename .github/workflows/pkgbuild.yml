@@ -55,7 +55,7 @@ jobs:
         with:
           repo_token: ${{secrets.GITHUB_TOKEN}}
 
-      - uses: peter-evans/repository-dispatch@v1
+      - uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{secrets.PUSH_TOKEN}}
           event-type: rebuild
