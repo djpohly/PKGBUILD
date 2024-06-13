@@ -1,9 +1,9 @@
 [Desktop Entry]
-Type=Application
 Name=Eclipse
-Comment=Open Development Platform
-Exec=eclipse
+Comment=Java Development Environment
 Icon=eclipse
+Exec=eclipse
 Terminal=false
-Categories=GTK;Development;IDE;
+Type=Application
+Categories=Development;IDE;Java;
 StartupNotify=true
