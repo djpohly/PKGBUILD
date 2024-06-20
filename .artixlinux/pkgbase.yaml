@@ -1,14 +1,14 @@
 ---
 pkgbase:
   name: fwupd
-  version: 1.9.21-1
+  version: 1.9.21-2
   arch:
     - x86_64
   pkgname:
     - fwupd
     - fwupd-docs
 actions:
-  addRepo: world
+  addRepo: world-goblins
   removeRepo: null
   triggersBuild: true
   triggersRebuild: false
@@ -26,8 +26,10 @@ repos:
     version: null
     packages: []
   world-goblins:
-    version: null
-    packages: []
+    version: 1.9.21-2
+    packages:
+      - fwupd-1.9.21-2-x86_64.pkg.tar.zst
+      - fwupd-docs-1.9.21-2-x86_64.pkg.tar.zst
   world-gremlins:
     version: null
     packages: []
