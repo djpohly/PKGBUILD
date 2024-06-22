@@ -8,12 +8,12 @@ pkgbase:
     - fwupd
     - fwupd-docs
 actions:
-  addRepo: world-goblins
-  removeRepo: null
-  triggersBuild: true
+  addRepo: world
+  removeRepo: world-goblins
+  triggersBuild: false
   triggersRebuild: false
   triggersRepoAdd: true
-  triggersRepoRemove: false
+  triggersRepoRemove: true
   triggersNoCheck: false
 repos:
   system-goblins:
@@ -26,18 +26,16 @@ repos:
     version: null
     packages: []
   world-goblins:
-    version: 1.9.21-2
-    packages:
-      - fwupd-1.9.21-2-x86_64.pkg.tar.zst
-      - fwupd-docs-1.9.21-2-x86_64.pkg.tar.zst
+    version: null
+    packages: []
   world-gremlins:
     version: null
     packages: []
   world:
-    version: 1.9.21-1
+    version: 1.9.21-2
     packages:
-      - fwupd-1.9.21-1-x86_64.pkg.tar.zst
-      - fwupd-docs-1.9.21-1-x86_64.pkg.tar.zst
+      - fwupd-1.9.21-2-x86_64.pkg.tar.zst
+      - fwupd-docs-1.9.21-2-x86_64.pkg.tar.zst
   lib32-goblins:
     version: null
     packages: []
