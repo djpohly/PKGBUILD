@@ -9,7 +9,7 @@ pkgname=(
   fwupd-docs
 )
 pkgver=1.9.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url='https://github.com/fwupd/fwupd'
@@ -24,6 +24,7 @@ depends=(
   glib2
   glibc
   gnutls
+  gsettings-desktop-schemas
   hicolor-icon-theme
   json-glib
   libarchive
