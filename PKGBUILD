@@ -12,7 +12,7 @@ license=('GPL')
 depends=(
   'glibc' 'ncurses' 'libassuan' 'libsecret' 'glib2'
   libsecret-1.so libncursesw.so libassuan.so libglib-2.0.so)
-makedepends=('qt6-base' 'qt5-x11extras' 'kwayland5' 'gtk2-compat' 'gcr-4' 'kguiaddons' 'kwindowsystem')
+makedepends=('gtk3' 'gcr-4')
 optdepends=(
   'gcr-4: GNOME backend'
   'gtk3: GTK backend'
@@ -21,7 +21,6 @@ optdepends=(
   'kguiaddons: Qt6 backend'
   'kwindowsystem: Qt6 backend'
 )
-backup=('etc/pinentry/preexec')
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2"{,.sig}
         'pinentry')
 sha256sums=('bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04'
@@ -33,6 +32,12 @@ validpgpkeys=(
   'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD' # Niibe Yutaka (GnuPG Release Key)
 )
 
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i ../fallback-tty.diff
+  autoreconf -if
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
   ./configure \
@@ -42,7 +47,7 @@ build() {
     --enable-fallback-curses \
     --enable-pinentry-emacs \
     --enable-pinentry-gnome3 \
-    --enable-pinentry-qt \
+    --disable-pinentry-qt \
     --enable-libsecret
 
   make
@@ -57,5 +62,8 @@ package() {
   # The -gtk backend has been built to be used with GTK3.
   mv "${pkgdir}/usr/bin/pinentry-gtk"{-2,}
 }
+
+source+=(fallback-tty.diff)
+sha256sums+=(311d0ae5d951637781d9aa88befd564cbae589b54534e0ae1a34a15ef6d678db)
 
 # vim: ts=2 sw=2 et:
