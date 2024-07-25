@@ -1,0 +1,61 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+
+pkgname=pinentry
+pkgver=1.3.1
+pkgrel=2
+pkgdesc='Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol'
+url='https://gnupg.org/related_software/pinentry/'
+arch=('x86_64')
+license=('GPL')
+depends=(
+  'glibc' 'ncurses' 'libassuan' 'libsecret' 'glib2'
+  libsecret-1.so libncursesw.so libassuan.so libglib-2.0.so)
+makedepends=('qt6-base' 'qt5-x11extras' 'kwayland5' 'gtk2-compat' 'gcr-4' 'kguiaddons' 'kwindowsystem')
+optdepends=(
+  'gcr-4: GNOME backend'
+  'gtk3: GTK backend'
+  'qt5-x11extras: Qt5 backend'
+  'kwayland5: Qt5 backend'
+  'kguiaddons: Qt6 backend'
+  'kwindowsystem: Qt6 backend'
+)
+backup=('etc/pinentry/preexec')
+source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2"{,.sig}
+        'pinentry')
+sha256sums=('bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04'
+            'SKIP'
+            '2f961cccf9aebddf9c0823a96809a10296d7af6516460ae2d93e8ea5a433166d')
+validpgpkeys=(
+  'D8692123C4065DEA5E0F3AB5249B39D24F25E3B6' # Werner Koch (dist sig)
+  '6DAA6E64A76D2840571B4902528897B826403ADA' # Werner Koch (dist signing 2020)
+  'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD' # Niibe Yutaka (GnuPG Release Key)
+)
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  ./configure \
+    --prefix=/usr \
+    --enable-pinentry-tty \
+    --enable-pinentry-curses \
+    --enable-fallback-curses \
+    --enable-pinentry-emacs \
+    --enable-pinentry-gnome3 \
+    --enable-pinentry-qt \
+    --enable-libsecret
+
+  make
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}" install
+  install -Dm 755 ../pinentry -t "${pkgdir}/usr/bin"
+
+  # The -gtk backend has been built to be used with GTK3.
+  mv "${pkgdir}/usr/bin/pinentry-gtk"{-2,}
+}
+
+# vim: ts=2 sw=2 et:
