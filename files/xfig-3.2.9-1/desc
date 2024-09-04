@@ -14,19 +14,13 @@ xfig
 An interactive drawing tool
 
 %CSIZE%
-6147673
+5407446
 
 %ISIZE%
-14860311
-
-%MD5SUM%
-7f2ea31dc1f7a32a4f9f60993b3f9cec
+14786111
 
 %SHA256SUM%
-ade80e7e4333994e8948d8b78a611eb80949895babbbe0b758ea11e9243543bb
-
-%PGPSIG%
-iQEzBAABCAAdFiEEKRUO+tSzCVC5Ji2lFW138LsgdFAFAmWZkZcACgkQFW138LsgdFBuUgf/QuJeT2K1HZXXbNSncO8OgrU6KOPtu2LkKnA4OxlmIaPXpsVdNEGv67ODysIWTFqAtrdI7RdOT47BKHRS+T8kdNwtUcERco8/LwEVOYc9pJ5qXoWA6sjjA9bT2rpUk3sVamIw+XZ5fIb+Dp0RzyGCGGV3BZK+BWERyampdGFbLqnEVAr54RJxFPoyEq6w+et74UERNgofC95J7R+mSEGZRMpZdSF5if0znfAdc0EV1EINDhWhryXTwksRIhkiBsSKGUAXcOb268VotEc+NfxZkBCJ2814VAQJh6a21Kyjdt7DyLvFrmQKiz0S6eG4+Sx5UMN3GljaapWQ2CvNOBCJTg==
+1432c58be3958fcaf4622e936391869e6490ca46e16ee039b397778a5bfd5371
 
 %URL%
 http://mcj.sourceforge.net/
@@ -38,10 +32,10 @@ custom
 x86_64
 
 %BUILDDATE%
-1704563040
+1725467171
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/7433056969 <pkgbuild@djpohly.com>
+https://github.com/djpohly/PKGBUILD/actions/runs/10705698909 <pkgbuild@djpohly.com>
 
 %DEPENDS%
 libjpeg
