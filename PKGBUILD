@@ -2,28 +2,25 @@
 # Contirbutor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=xfig
-pkgver=3.2.8
+pkgver=3.2.9
 pkgrel=1
 pkgdesc="An interactive drawing tool"
 arch=('x86_64' 'i686')
 url="http://mcj.sourceforge.net/"
 license=('custom')
-depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm' 'ghostscript')
+depends=('libjpeg' 'xaw3d' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'libpng' 'libxpm' 'ghostscript' 'libxft')
 optdepends=('fig2dev: to use the frontend to convert fig files')
 makedepends=('fig2dev' 'libxaw')
 options=('!makeflags' '!emptydirs')
 source=(http://downloads.sourceforge.net/mcj/${pkgname}-${pkgver}.tar.xz
-	xfig-aspell.patch xfig-3.2.5-color-resources.patch
-        LICENSE)
-sha1sums=('93229765f9e764f76e10585309a6c690554cec64'
-          'a57fcc3c8396d58b19061f9cdd93beea728e38e5'
-          'dd41e0a007bb74b74e1af50b6b04aa6aec61ab22'
+	xfig.patch LICENSE)
+sha1sums=('c88ff9ddb9da4ce5b8ac19deb31cb4efa3a363e9'
+          '20fbdeb74f5405f729033e74a368ce5b88ba902f'
           '31edf4cfab708820ea3f114d095dfef5aa88e5aa')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-   patch -p1 -i "${srcdir}/xfig-aspell.patch"
-   patch -p1 -i "${srcdir}/xfig-3.2.5-color-resources.patch"
+  patch -Np2 -b -z .orig -i ../xfig.patch
 }
 
 build() {
