@@ -4,7 +4,7 @@
 
 pkgname=pinentry
 pkgver=1.3.1
-pkgrel=2
+pkgrel=5
 pkgdesc='Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol'
 url='https://gnupg.org/related_software/pinentry/'
 arch=('x86_64')
@@ -14,12 +14,8 @@ depends=(
   libsecret-1.so libncursesw.so libassuan.so libglib-2.0.so)
 makedepends=('gtk3' 'gcr-4')
 optdepends=(
-  'gcr-4: GNOME backend'
+  'gcr: GNOME backend'
   'gtk3: GTK backend'
-  'qt5-x11extras: Qt5 backend'
-  'kwayland5: Qt5 backend'
-  'kguiaddons: Qt6 backend'
-  'kwindowsystem: Qt6 backend'
 )
 source=("https://www.gnupg.org/ftp/gcrypt/${pkgname}/${pkgname}-${pkgver}.tar.bz2"{,.sig}
         'pinentry')
@@ -54,6 +50,12 @@ build() {
 }
 
 package() {
+  depends+=(
+    libglib-2.0.so
+    libncursesw.so
+    libsecret-1.so
+  )
+
   cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
@@ -64,6 +66,6 @@ package() {
 }
 
 source+=(fallback-tty.diff)
-sha256sums+=(311d0ae5d951637781d9aa88befd564cbae589b54534e0ae1a34a15ef6d678db)
+sha256sums+=(2d02da1bfb151a6dd53aa05fa4f403053062a46845bac54586dfc9d79e920ce6)
 
 # vim: ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 ---
 pkgbase:
   name: pinentry
-  version: 1.3.1-2
+  version: 1.3.1-5
   arch:
     - x86_64
   pkgname:
@@ -22,9 +22,9 @@ repos:
     version: null
     packages: []
   system:
-    version: 1.3.1-2
+    version: 1.3.1-5
     packages:
-      - pinentry-1.3.1-2-x86_64.pkg.tar.zst
+      - pinentry-1.3.1-5-x86_64.pkg.tar.zst
   world-goblins:
     version: null
     packages: []
