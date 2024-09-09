@@ -10,9 +10,16 @@ license=('GPL3')
 arch=('x86_64')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('2347a7e7de150d84172249c8bb02da6b9dd27a5b7c9ddd4505993e7819c0df57d0d7ebdee2161b3c21d1ebd598a2044c9954cdc82ab271a5a87b701896f2b328')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "2.3.16-service.patch")
+b2sums=('2347a7e7de150d84172249c8bb02da6b9dd27a5b7c9ddd4505993e7819c0df57d0d7ebdee2161b3c21d1ebd598a2044c9954cdc82ab271a5a87b701896f2b328'
+        'd7719beef51ad0aa4e83df709b634ee480e8afaf26da91827d2564b6d744edecb6787de561bb7fbf0db1b1f12891234227a698f2cdc35319e1620f80dbfb9236')
 options=(!lto)
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch -i ../2.3.16-service.patch
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
