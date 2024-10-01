@@ -1,0 +1,8 @@
+%FILES%
+usr/
+usr/bin/
+usr/bin/goimapnotify
+usr/lib/
+usr/lib/systemd/
+usr/lib/systemd/user/
+usr/lib/systemd/user/goimapnotify@.service
