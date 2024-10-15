@@ -9,7 +9,7 @@ pkgname=(
   fwupd-docs
 )
 pkgver=2.0.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url='https://github.com/fwupd/fwupd'
@@ -56,14 +56,12 @@ makedepends=(
   pandoc
   python-cairo
   python-dbus
+  python-dbusmock
   python-gobject
   python-pillow
+  umockdev
   vala
   valgrind
-)
-checkdepends=(
-  umockdev
-  python-dbusmock
 )
 source=(
   "https://github.com/fwupd/fwupd/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz"{,.asc}
