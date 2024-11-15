@@ -134,7 +134,6 @@ package_djp-meta-xorg() { pkgdesc="Metapackage for graphical systems"; replaces=
   tigervnc
   ttf-et-book
   wmname
-  x11-touchscreen-calibrator
   xcursor-vanilla-dmz
   xf86-input-joystick
   xorg-server
