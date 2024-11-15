@@ -23,7 +23,7 @@ pkgname=(
   djp-meta-remote
 )
 pkgver=0.2
-pkgrel=29
+pkgrel=30
 pkgdesc="Metapackages to manage Arch installations"
 arch=(any)
 url="https://github.com/djpohly/PKGBUILD"
