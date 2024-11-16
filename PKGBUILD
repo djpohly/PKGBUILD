@@ -9,7 +9,7 @@ pkgname=(
   fwupd-docs
 )
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url='https://github.com/fwupd/fwupd'
@@ -28,6 +28,7 @@ depends=(
   json-glib
   libarchive
   libcbor
+  libdrm
   libjcat
   libmbim
   libmm-glib
@@ -49,7 +50,6 @@ makedepends=(
   gi-docgen
   gnu-efi-libs
   gobject-introspection
-  libdrm
   meson
   noto-fonts
   noto-fonts-cjk
