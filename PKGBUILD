@@ -9,7 +9,7 @@ pkgname=(
   fwupd-docs
 )
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=(x86_64)
 url='https://github.com/fwupd/fwupd'
@@ -106,9 +106,9 @@ _pick() {
 package_fwupd() {
   depends+=(
     libarchive.so
+    libblkid.so
     libcbor.so
     libcurl.so
-    libgudev-1.0.so
     libjson-glib-1.0.so
     libmm-glib.so
     libpassim.so
