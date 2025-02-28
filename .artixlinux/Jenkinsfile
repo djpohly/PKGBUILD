@@ -1,0 +1,3 @@
+@Library('artix-ci@orion') import org.artixlinux.RepoPackage
+
+PackagePipeline(new RepoPackage(this))
