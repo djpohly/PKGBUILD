@@ -35,7 +35,6 @@ depends=(
   libqmi
   libusb
   libxmlb
-  passim
   polkit
   protobuf-c
   python
@@ -81,6 +80,7 @@ build() {
     -D elogind=enabled
     -D docs=enabled
     -D efi_binary=false
+    -D passim=disabled
     -D launchd=disabled
     -D supported_build=enabled
   )
@@ -111,7 +111,6 @@ package_fwupd() {
     libcurl.so
     libjson-glib-1.0.so
     libmm-glib.so
-    libpassim.so
     libprotobuf-c.so
     libqmi-glib.so
   )
