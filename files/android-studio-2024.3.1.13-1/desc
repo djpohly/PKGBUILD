@@ -1,0 +1,51 @@
+%FILENAME%
+android-studio-2024.3.1.13-1-x86_64.pkg.tar.zst
+
+%NAME%
+android-studio
+
+%BASE%
+android-studio
+
+%VERSION%
+2024.3.1.13-1
+
+%DESC%
+The official Android IDE (Stable branch)
+
+%CSIZE%
+1285842713
+
+%ISIZE%
+3211294102
+
+%SHA256SUM%
+300282629d4fe16dee5c902902851b26b5a977376052e03a6a962ca729be0eba
+
+%URL%
+https://developer.android.com/
+
+%LICENSE%
+APACHE
+
+%ARCH%
+x86_64
+
+%BUILDDATE%
+1741457744
+
+%PACKAGER%
+https://github.com/djpohly/PKGBUILD/actions/runs/13740220357 <pkgbuild@djpohly.com>
+
+%DEPENDS%
+alsa-lib
+freetype2
+libxrender
+libxtst
+which
+
+%OPTDEPENDS%
+gtk2: GTK+ look and feel
+libgl: emulator support
+ncurses5-compat-libs: native debugger support
+
