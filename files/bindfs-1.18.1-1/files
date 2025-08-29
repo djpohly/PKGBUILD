@@ -5,6 +5,12 @@ usr/bin/bindfs
 usr/bin/mount.bindfs
 usr/bin/mount.fuse.bindfs
 usr/share/
+usr/share/doc/
+usr/share/doc/bindfs/
+usr/share/doc/bindfs/README.md
+usr/share/licenses/
+usr/share/licenses/bindfs/
+usr/share/licenses/bindfs/LICENSE
 usr/share/man/
 usr/share/man/man1/
 usr/share/man/man1/bindfs.1.gz
