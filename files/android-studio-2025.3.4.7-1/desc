@@ -1,5 +1,5 @@
 %FILENAME%
-android-studio-2024.3.1.13-1-x86_64.pkg.tar.zst
+android-studio-2025.3.4.7-1-x86_64.pkg.tar.zst
 
 %NAME%
 android-studio
@@ -8,19 +8,19 @@ android-studio
 android-studio
 
 %VERSION%
-2024.3.1.13-1
+2025.3.4.7-1
 
 %DESC%
 The official Android IDE (Stable branch)
 
 %CSIZE%
-1285842713
+1394165178
 
 %ISIZE%
-3211294102
+3474023703
 
 %SHA256SUM%
-300282629d4fe16dee5c902902851b26b5a977376052e03a6a962ca729be0eba
+4616b576debabe5f81928be44ef63f130e79e5665a2bcb6caa12318521bd9ca8
 
 %URL%
 https://developer.android.com/
@@ -32,10 +32,10 @@ APACHE
 x86_64
 
 %BUILDDATE%
-1741457744
+1778956278
 
 %PACKAGER%
-https://github.com/djpohly/PKGBUILD/actions/runs/13740220357 <pkgbuild@djpohly.com>
+https://github.com/djpohly/PKGBUILD/actions/runs/25969598412 <pkgbuild@djpohly.com>
 
 %DEPENDS%
 alsa-lib
